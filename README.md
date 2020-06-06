@@ -6,7 +6,7 @@ Stock price analysis and prediction using Python and ML.
 ###### Install virtual env:
 - pip3 install virtualenv
 
-###### - Creating new env: Environment name (stock-env)
+###### Creating new env: Environment name (stock-env)
 - python3 -m venv stock-env
 
 ###### Installing requirements:
