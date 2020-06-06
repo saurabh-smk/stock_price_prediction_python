@@ -1,0 +1,11 @@
+#AWS tools
+boto3==1.13.24
+
+#collection tools
+requests==2.23.0
+
+#processing tools
+beautifulsoup==44.9.1
+
+#testing tools
+pytest==5.4.3
