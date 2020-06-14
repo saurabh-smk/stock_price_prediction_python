@@ -36,12 +36,12 @@ Created on Sun Jun 14 02:12:23 2020
 #             if time_count == 15:
 #                 break
 #
-# key_1 = 'E3789ZJ6PAOUYJ7J'
+
 # stock_list_1 = ['AAPL','TSLA','GOOGL','FB','AMZN']
 # collect_data_1 = CollectStockData(key_1, stock_list_1)
 # collect_data_1.GetAPIDataFor15Mins()
 #
-# key_2 = '3FWDSWTJWM7W1JCR'
+
 # stock_list_2 = ['NFLX','UBER','DBX','TWTR','LNKD']
 # collect_data_2 = CollectStockData(key_2, stock_list_2)
 # collect_data_2.GetAPIDataFor15Mins()
