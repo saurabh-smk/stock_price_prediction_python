@@ -132,7 +132,7 @@ class KafkaProducer():
 
             for stock in stock_data:
                 cur_stock = json.dumps(stock)
-                print(sys.getsizeof(cur_stock))
+                # print(sys.getsizeof(cur_stock))
 
                 self.p.poll(0)
                 self.p.produce('testtopic', cur_stock.encode('utf-8'), callback=self.delivery_report)
