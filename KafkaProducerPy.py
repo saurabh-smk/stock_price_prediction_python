@@ -107,12 +107,12 @@ class KafkaProducer():
 
     def getData(self):
 
-        key_1 = 'E3789ZJ6PAOUYJ7J'
+        key_1 = 'xxx'
         stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
         collect_data_1 = CollectStockData(key_1, stock_list_1)
         stock_data1 =  collect_data_1.GetAPIDataFor15Mins()
 
-        # key_2 = '3FWDSWTJWM7W1JCR'
+        # key_2 = 'xxx'
         # stock_list_2 = ['NFLX', 'UBER', 'DBX', 'TWTR', 'LNKD']
         # collect_data_2 = CollectStockData(key_2, stock_list_2)
         # stock_data2 = collect_data_2.GetAPIDataFor15Mins()
