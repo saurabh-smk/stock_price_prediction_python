@@ -81,7 +81,7 @@ class KafkaProducer():
 
     def __init__(self):
 
-        self.p = Producer({'bootstrap.servers': '3.229.142.183:9092'})
+        self.p = Producer({'bootstrap.servers': 'xxxxxx:9092'})
         self.fake = Faker('en_US')
 
         self.sendData()
