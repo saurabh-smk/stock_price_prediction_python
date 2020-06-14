@@ -1,4 +1,6 @@
 from confluent_kafka import Consumer
+import boto3
+import json
 
 
 c = Consumer({
@@ -21,6 +23,11 @@ while True:
     # print('Received message: {}'.format(msg.value().decode('utf-8')))
     x = msg.value().decode('utf-8')
 
-    print(x)
+    s3_client = boto3.client('s3')
+
+    x = bytes(json.dumps(x).encode('UTF-8'))
+
+    s3_client.put_object(Body=x, Bucket='stock-engr', Key='stock-data')
+    # print(x)
 
 c.close()

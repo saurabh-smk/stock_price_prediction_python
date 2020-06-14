@@ -117,7 +117,7 @@ class KafkaProducer():
         # collect_data_2 = CollectStockData(key_2, stock_list_2)
         # stock_data2 = collect_data_2.GetAPIDataFor15Mins()
 
-        return [stock_data1]
+        return stock_data1
 
     def sendData(self):
 
@@ -132,7 +132,7 @@ class KafkaProducer():
 
             for stock in stock_data:
                 cur_stock = json.dumps(stock)
-                # print(sys.getsizeof(cur_stock))
+                print(cur_stock)
 
                 self.p.poll(0)
                 self.p.produce('testtopic', cur_stock.encode('utf-8'), callback=self.delivery_report)
