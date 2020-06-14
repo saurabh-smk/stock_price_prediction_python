@@ -4,7 +4,7 @@ import json
 
 
 c = Consumer({
-    'bootstrap.servers': '3.229.142.183:9092',
+    'bootstrap.servers': 'xxxxx:9092',
     'group.id': 'mygroup2',
     'auto.offset.reset': 'latest'
 })
@@ -27,7 +27,7 @@ while True:
 
     x = bytes(json.dumps(x).encode('UTF-8'))
 
-    s3_client.put_object(Body=x, Bucket='stock-engr', Key='stock-data')
+    s3_client.put_object(Body=x, Bucket='xxx-xxxx', Key='stock-data')
     # print(x)
 
 c.close()
