@@ -72,7 +72,7 @@
 from CollectStockData import CollectStockData
 
 from confluent_kafka import Producer
-from faker import Faker
+# from faker import Faker
 import json
 import time
 import sys
@@ -82,7 +82,7 @@ class KafkaProducer():
     def __init__(self):
 
         self.p = Producer({'bootstrap.servers': 'xxxxxx:9092'})
-        self.fake = Faker('en_US')
+        # self.fake = Faker('en_US')
 
         self.sendData()
 
