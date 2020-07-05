@@ -83,8 +83,7 @@ class KafkaProducer():
 
         self.p = Producer({'bootstrap.servers': 'xxxxxx:9092'})
         # self.fake = Faker('en_US')
-        # print(""
-        # )
+        # print("")
 
         self.sendData()
 
