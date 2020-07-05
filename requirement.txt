@@ -6,6 +6,9 @@ requests==2.23.0
 
 #processing tools
 beautifulsoup==44.9.1
+alpha-vantage==2.2.0
+confluent-kafka==1.4.2
+
 
 #testing tools
 pytest==5.4.3
