@@ -9,16 +9,20 @@ from alpha_vantage.timeseries import TimeSeries
 from datetime import date
 
 class CollectStockData:
+
+    '''
+    'self.key': Alpha vantage key to get the response of the 'get_intraday' API.
+    'self.stock_list': to get the list of the current stocks.
+    'self.stock_data': to get the share details, key of each dictionary is the share name.
+    '''
     def __init__(self, key, stock_list):
-        '''
-        'self.key': Alpha vantage key to get the response of the 'get_intraday' API.
-        'self.stock_list': to get the list of the current stocks.
-        'self.stock_data': to get the share details, key of each dictionary is the share name.
-        '''
         self.key = key
         self.stock_list = stock_list
         self.stock_data = [{}, {}, {}, {}, {}]
 
+    '''
+    Method to call intraday Alpha Vantage API to collect last 5 days full data with 1 minute interval
+    '''
     def GetAPIDataFor15Mins(self):
         ts = TimeSeries(key=self.key, output_format='json')
 
@@ -43,6 +47,10 @@ class CollectStockData:
 
         return self.stock_data
 
+    '''
+    Method to preprocess the response of the API, as API provides last 5 days data, using this function only current days
+    data is fetched.
+    '''
     def preprocessStockData(self):
         today = date.today()
         # today = '2020-07-10'
