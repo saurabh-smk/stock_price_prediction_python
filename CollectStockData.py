@@ -6,16 +6,20 @@ Created on Sun Jun 14 02:12:23 2020
 @author: anikts
 """
 from alpha_vantage.timeseries import TimeSeries
+from datetime import date
 
 class CollectStockData:
     def __init__(self, key, stock_list):
+        '''
+        'self.key': Alpha vantage key to get the response of the 'get_intraday' API.
+        'self.stock_list': to get the list of the current stocks.
+        'self.stock_data': to get the share details, key of each dictionary is the share name.
+        '''
         self.key = key
         self.stock_list = stock_list
         self.stock_data = [{}, {}, {}, {}, {}]
 
     def GetAPIDataFor15Mins(self):
-        time_count = 0
-        # while True:
         ts = TimeSeries(key=self.key, output_format='json')
 
         stock1_data, meta_data1 = ts.get_intraday(symbol=self.stock_list[0], interval='1min', outputsize='full')
@@ -30,18 +34,34 @@ class CollectStockData:
         self.stock_data[3][self.stock_list[3]] = stock4_data
         self.stock_data[4][self.stock_list[4]] = stock5_data
 
-        # time.sleep(60)
-        # time_count += 1
-        # if time_count == 15:
-        #     break
+        self.stock_data = self.preprocessStockData()
+
+        # print(self.stock_data)
+        # f = open('stock_data_sample_data.py', 'w')
+        # f.write('dict = ' + repr(self.stock_data) + '\n')
+        # f.close()
 
         return self.stock_data
 
+    def preprocessStockData(self):
+        today = date.today()
+        # today = '2020-07-10'
+        processed_stocks =[{},{},{},{},{}]
+        for share in range(len(self.stock_list)):
+            for key,value in self.stock_data[share][self.stock_list[share]].items():
+                if today in key:
+                    processed_stocks[share][key] = value
+        return processed_stocks
+        # f = open('file1.py', 'w')
+        # f.write('dict = ' + repr(processed_stocks) + '\n')
+        # f.close()
+
 
 if __name__ == "__main__":
-    # execute only if run as a script
-    stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
-    key_1 = '3FWDSWTJWM7W1JCR'
-    stock_data = CollectStockData(key_1, stock_list_1)
-    stock_data.GetAPIDataFor15Mins()
-    print("In main")
+    # execute only if you want to this file as a script to get stock_data
+    # stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
+    # key_1 = '3FWDSWTJWM7W1JCR'
+    # stock_data = CollectStockData(key_1, stock_list_1)
+    # stock_data.GetAPIDataFor15Mins()
+
+    print("Completed fetching data of stocks")
