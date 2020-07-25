@@ -66,9 +66,6 @@
 # p.flush()
 
 
-
-
-
 from CollectStockData import CollectStockData
 
 from confluent_kafka import Producer
@@ -108,7 +105,7 @@ class KafkaProducer():
 
     def getData(self):
 
-        key_1 = 'xxx'
+        key_1 = 'xxxxxx'
         stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
         collect_data_1 = CollectStockData(key_1, stock_list_1)
         stock_data1 =  collect_data_1.GetAPIDataFor15Mins()
@@ -133,10 +130,42 @@ class KafkaProducer():
 
             for stock in stock_data:
                 cur_stock = json.dumps(stock)
-                print(cur_stock)
+                if "AAPL" in cur_stock:
+                    print(cur_stock)
 
-                self.p.poll(0)
-                self.p.produce('testtopic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    self.p.poll(0)
+                    response = self.p.produce('aapl-topic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    print(response)
+                if "TSLA" in cur_stock:
+                    print(cur_stock)
+
+                    self.p.poll(0)
+                    response = self.p.produce('tsla-topic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    print(response)
+                if "GOOGL" in cur_stock:
+                    print(cur_stock)
+
+                    self.p.poll(0)
+                    response = self.p.produce('googl-topic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    print(response)
+                if "FB" in cur_stock:
+                    print(cur_stock)
+
+                    self.p.poll(0)
+                    response = self.p.produce('fb-topic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    print(response)
+                if "AMZN" in cur_stock:
+                    print(cur_stock)
+
+                    self.p.poll(0)
+                    response = self.p.produce('amzn-topic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                    print(response)
+
+                # print(cur_stock)
+                #
+                # self.p.poll(0)
+                # response = self.p.produce('testtopic', cur_stock.encode('utf-8'), callback=self.delivery_report)
+                # print(response)
 
             self.p.flush()
 
