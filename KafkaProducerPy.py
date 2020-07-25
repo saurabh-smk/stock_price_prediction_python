@@ -81,7 +81,7 @@ class KafkaProducer():
 
     def __init__(self):
 
-        self.p = Producer({'bootstrap.servers': 'xxxxxx:9092'})
+        self.p = Producer({'bootstrap.servers': '3.214.215.150:9092'})
         # self.fake = Faker('en_US')
         # print("")
 
@@ -108,7 +108,7 @@ class KafkaProducer():
 
     def getData(self):
 
-        key_1 = 'xxx'
+        key_1 = '3FWDSWTJWM7W1JCR'
         stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
         collect_data_1 = CollectStockData(key_1, stock_list_1)
         stock_data1 =  collect_data_1.GetAPIDataFor15Mins()

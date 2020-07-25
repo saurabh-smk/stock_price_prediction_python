@@ -62,7 +62,7 @@ class CollectStockData:
         return processed_stocks
         # f = open('file1.py', 'w')
         # f.write('dict = ' + repr(processed_stocks) + '\n')
-        # f.close()
+        # f.close()sto  
 
 
 if __name__ == "__main__":
