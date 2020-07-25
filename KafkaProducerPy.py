@@ -122,7 +122,7 @@ class KafkaProducer():
         # for i in range(0, 1000):
         #     x = json.dumps(self.en_ran_data(i))
         #     print(x)
-        time_count = 0
+        # time_count = 0
         while True:
             stock_data1 = self.getData()
 
@@ -169,9 +169,9 @@ class KafkaProducer():
 
             self.p.flush()
 
-            time.sleep(60)
-            time_count += 1
-            if time_count == 15:
-                break
+            # time.sleep(60)
+            # time_count += 1
+            # if time_count == 15:
+            #     break
 
 kp = KafkaProducer()
