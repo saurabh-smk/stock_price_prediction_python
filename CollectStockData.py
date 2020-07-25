@@ -69,7 +69,6 @@ class CollectStockData:
         f.close()
         return processed_stocks
 
-
 if __name__ == "__main__":
     # execute only if you want to this file as a script to get stock_data
     # stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
