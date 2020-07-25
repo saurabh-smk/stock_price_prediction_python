@@ -26,11 +26,11 @@ class CollectStockData:
     def GetAPIDataFor15Mins(self):
         ts = TimeSeries(key=self.key, output_format='json')
 
-        stock1_data, meta_data1 = ts.get_intraday(symbol=self.stock_list[0], interval='1min', outputsize='full')
-        stock2_data, meta_data2 = ts.get_intraday(symbol=self.stock_list[1], interval='1min', outputsize='full')
-        stock3_data, meta_data3 = ts.get_intraday(symbol=self.stock_list[2], interval='1min', outputsize='full')
-        stock4_data, meta_data4 = ts.get_intraday(symbol=self.stock_list[3], interval='1min', outputsize='full')
-        stock5_data, meta_data5 = ts.get_intraday(symbol=self.stock_list[4], interval='1min', outputsize='full')
+        stock1_data, meta_data1 = ts.get_intraday(symbol=self.stock_list[0], interval='1min', outputsize='compact')
+        stock2_data, meta_data2 = ts.get_intraday(symbol=self.stock_list[1], interval='1min', outputsize='compact')
+        stock3_data, meta_data3 = ts.get_intraday(symbol=self.stock_list[2], interval='1min', outputsize='compact')
+        stock4_data, meta_data4 = ts.get_intraday(symbol=self.stock_list[3], interval='1min', outputsize='compact')
+        stock5_data, meta_data5 = ts.get_intraday(symbol=self.stock_list[4], interval='1min', outputsize='compact')
 
         self.stock_data[0][self.stock_list[0]] = stock1_data
         self.stock_data[1][self.stock_list[1]] = stock2_data
@@ -38,7 +38,11 @@ class CollectStockData:
         self.stock_data[3][self.stock_list[3]] = stock4_data
         self.stock_data[4][self.stock_list[4]] = stock5_data
 
-        self.stock_data = self.preprocessStockData()
+        f = open('sample_data123.txt', 'w')
+        f.write('dict = ' + repr(self.stock_data) + '\n')
+        f.close()
+
+        # self.stock_data = self.preprocessStockData()
 
         # print(self.stock_data)
         # f = open('stock_data_sample_data.py', 'w')
@@ -52,24 +56,25 @@ class CollectStockData:
     data is fetched.
     '''
     def preprocessStockData(self):
-        today = date.today()
-        # today = '2020-07-10'
+        # today = date.today()
+        today = '2020-07-10'
         processed_stocks =[{},{},{},{},{}]
         for share in range(len(self.stock_list)):
             for key,value in self.stock_data[share][self.stock_list[share]].items():
                 if today in key:
                     processed_stocks[share][key] = value
+
+        f = open('sample_data.txt', 'w')
+        f.write('dict = ' + repr(processed_stocks) + '\n')
+        f.close()
         return processed_stocks
-        # f = open('file1.py', 'w')
-        # f.write('dict = ' + repr(processed_stocks) + '\n')
-        # f.close()sto  
 
 
 if __name__ == "__main__":
     # execute only if you want to this file as a script to get stock_data
     # stock_list_1 = ['AAPL', 'TSLA', 'GOOGL', 'FB', 'AMZN']
-    # key_1 = '3FWDSWTJWM7W1JCR'
+    # key_1 = 'xxxxxx'
     # stock_data = CollectStockData(key_1, stock_list_1)
     # stock_data.GetAPIDataFor15Mins()
-
+    #
     print("Completed fetching data of stocks")
